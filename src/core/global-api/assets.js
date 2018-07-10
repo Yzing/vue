@@ -21,6 +21,7 @@ export function initAssetRegisters (Vue: GlobalAPI) {
         }
         if (type === 'component' && isPlainObject(definition)) {
           definition.name = definition.name || id
+          // Vue.extends(options)
           definition = this.options._base.extend(definition)
         }
         if (type === 'directive' && typeof definition === 'function') {

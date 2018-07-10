@@ -45,6 +45,13 @@ export function updateComponentListeners (
 
 export function eventsMixin (Vue: Class<Component>) {
   const hookRE = /^hook:/
+
+  /**
+   * [regist events]
+   * @param  {[String, Array<String>]}   event [name]
+   * @param  {Function} fn    [handler]
+   * @return {[type]}         [vm]
+   */
   Vue.prototype.$on = function (event: string | Array<string>, fn: Function): Component {
     const vm: Component = this
     if (Array.isArray(event)) {
@@ -62,6 +69,12 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
+  /**
+   * [once event]
+   * @param  {[String]}   event []
+   * @param  {Function} fn    []
+   * @return {[type]}         [vm]
+   */
   Vue.prototype.$once = function (event: string, fn: Function): Component {
     const vm: Component = this
     function on () {
@@ -73,6 +86,12 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
+  /**
+   * [description]
+   * @param  {[type]}   event [description]
+   * @param  {Function} fn    [description]
+   * @return {[type]}         [description]
+   */
   Vue.prototype.$off = function (event?: string | Array<string>, fn?: Function): Component {
     const vm: Component = this
     // all
@@ -111,6 +130,11 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
+  /**
+   * [description]
+   * @param  {[type]} event [description]
+   * @return {[type]}       [description]
+   */
   Vue.prototype.$emit = function (event: string): Component {
     const vm: Component = this
     if (process.env.NODE_ENV !== 'production') {
